@@ -1,0 +1,26 @@
+name: Meu Primeiro Workflow
+
+#acionar a pipeline sempre que tiver um push
+on: [push]
+
+jobs:
+  execucao-da-atividade:
+    runs-on: ubuntu-latest
+
+    steps:
+      # baixar conteudo do repo
+      - name: Fazer o checkout do repositório
+        uses: actions/checkout@v4
+
+      #outra action oficial simples
+      - name: Configurar ambiente Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # executar comando simples
+      - name: Imprimir mensagem e listar arquivos
+        run: |
+          echo "Pipeline executada com sucesso!"
+          echo "Listando os arquivos do projeto:"
+          ls -la
